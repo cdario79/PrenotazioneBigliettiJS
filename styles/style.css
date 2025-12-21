@@ -1,0 +1,560 @@
+/* ================================================
+   CineVerse - Cinema Booking App Styles
+   ================================================ */
+
+/* ===== Variables ===== */
+:root {
+  --primary-color: #6366f1;
+  --primary-dark: #4f46e5;
+  --primary-light: #818cf8;
+  --secondary-color: #ec4899;
+  --success-color: #10b981;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --dark-bg: #1e293b;
+  --light-bg: #f8fafc;
+  --seat-available: #94a3b8;
+  --seat-selected: var(--primary-color);
+  --seat-occupied: #ef4444;
+  --transition-speed: 0.3s;
+}
+
+/* ===== Global Styles ===== */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Noscript Warning ===== */
+.noscript-warning {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  padding: 20px;
+}
+
+.noscript-content {
+  background: white;
+  padding: 40px;
+  border-radius: 12px;
+  max-width: 600px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+.noscript-content h1 {
+  color: #667eea;
+  margin-bottom: 20px;
+  font-size: 2em;
+}
+
+.noscript-content ul {
+  text-align: left;
+  margin: 20px auto;
+  max-width: 400px;
+}
+
+.noscript-content li {
+  margin: 10px 0;
+  padding-left: 10px;
+}
+
+.noscript-content details {
+  margin-top: 30px;
+  text-align: left;
+  background: #f5f5f5;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.noscript-content summary {
+  cursor: pointer;
+  font-weight: bold;
+  color: #667eea;
+  margin-bottom: 15px;
+}
+
+.noscript-content code {
+  background: #e0e0e0;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: monospace;
+}
+
+.noscript-content .alternative {
+  margin-top: 30px;
+  padding-top: 20px;
+  border-top: 2px solid #e0e0e0;
+}
+
+.noscript-content a {
+  color: #667eea;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.noscript-content a:hover {
+  text-decoration: underline;
+}
+
+/* ===== Header ===== */
+.navbar {
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-light) !important;
+  transition: color var(--transition-speed);
+}
+
+.navbar-brand:hover {
+  color: white !important;
+}
+
+.navbar-brand i {
+  margin-right: 8px;
+}
+
+/* ===== Main Container ===== */
+#app {
+  background: white;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  flex: 1;
+}
+
+/* ===== Hero Section ===== */
+.hero-section h1 {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: bold;
+}
+
+/* ===== Section Titles ===== */
+.section-title {
+  color: var(--dark-bg);
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.section-title i {
+  color: var(--primary-color);
+}
+
+/* ===== Film Cards ===== */
+.film-card {
+  background: white;
+  border: 2px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 20px;
+  cursor: pointer;
+  transition: all var(--transition-speed);
+  height: 100%;
+}
+
+.film-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+  border-color: var(--primary-color);
+}
+
+.film-card.active {
+  border-color: var(--primary-color);
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+  box-shadow: 0 10px 25px rgba(99, 102, 241, 0.3);
+}
+
+.film-card .film-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.film-badge.badge-action {
+  background: linear-gradient(135deg, #ef4444, #dc2626);
+  color: white;
+}
+
+.film-badge.badge-drama {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+}
+
+.film-badge.badge-comedy {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.film-badge.badge-scifi {
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
+  color: white;
+}
+
+.film-card h3 {
+  color: var(--dark-bg);
+  font-size: 1.25rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.film-card .film-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  color: #64748b;
+  font-size: 0.9rem;
+}
+
+.film-info i {
+  color: var(--primary-color);
+  margin-right: 5px;
+}
+
+.film-price {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  margin-top: 10px;
+}
+
+/* ===== Cinema Hall ===== */
+.sala-container {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  border-radius: 16px;
+  padding: 30px;
+}
+
+/* Screen */
+.screen-container {
+  display: flex;
+  justify-content: center;
+  perspective: 1000px;
+}
+
+.screen {
+  background: linear-gradient(180deg, #1e293b 0%, #334155 100%);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  width: 80%;
+  border-radius: 0 0 50px 50px;
+  font-weight: bold;
+  letter-spacing: 4px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  transform: rotateX(-10deg);
+}
+
+/* Legend */
+.legend {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: var(--dark-bg);
+}
+
+/* Seats Grid */
+.seats-grid {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.seat {
+  aspect-ratio: 1;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: bold;
+  position: relative;
+  background: var(--seat-available);
+}
+
+.seat:focus {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+.seat.available {
+  background: var(--seat-available);
+  color: white;
+}
+
+.seat.available:hover {
+  background: var(--primary-light);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.4);
+}
+
+.seat.selected {
+  background: var(--seat-selected);
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.6);
+  animation: pulse 0.3s ease;
+}
+
+.seat.occupied {
+  background: var(--seat-occupied);
+  color: white;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.seat.occupied:hover {
+  transform: none;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1.05);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* Row Labels */
+.seat-row-label {
+  background: transparent;
+  cursor: default;
+  font-weight: bold;
+  color: var(--dark-bg);
+  border: none;
+}
+
+.seat-row-label:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+/* ===== Booking Summary ===== */
+.booking-summary {
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  border: 2px solid var(--primary-color);
+  border-radius: 16px;
+  padding: 30px;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.2);
+}
+
+.booking-summary h3 {
+  color: var(--dark-bg);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.summary-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+}
+
+.total-row {
+  padding-top: 15px;
+}
+
+/* ===== Buttons ===== */
+.btn-primary {
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+  border: none;
+  font-weight: bold;
+  padding: 12px 24px;
+  transition: all var(--transition-speed);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.4);
+}
+
+.btn-primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-outline-secondary {
+  border: 2px solid #cbd5e1;
+  color: #64748b;
+  font-weight: bold;
+  transition: all var(--transition-speed);
+}
+
+.btn-outline-secondary:hover {
+  background: #e2e8f0;
+  border-color: #94a3b8;
+  transform: translateY(-2px);
+}
+
+/* ===== Alerts ===== */
+.alert {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.alert-success {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: white;
+}
+
+.alert-danger {
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+}
+
+.alert-warning {
+  background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+  color: white;
+}
+
+.alert-info {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+}
+
+/* ===== Footer ===== */
+.footer {
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(10px);
+  color: white;
+  margin-top: 50px;
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 768px) {
+  #app {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .hero-section h1 {
+    font-size: 2rem;
+  }
+
+  .seats-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 8px;
+  }
+
+  .seat {
+    font-size: 0.65rem;
+  }
+
+  .screen {
+    width: 90%;
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+  }
+
+  .legend {
+    gap: 15px;
+    font-size: 0.85rem;
+  }
+
+  .booking-summary {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 576px) {
+  .seats-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 6px;
+  }
+
+  .film-card h3 {
+    font-size: 1rem;
+  }
+
+  .film-price {
+    font-size: 1.2rem;
+  }
+}
+
+/* ===== Loading Animation ===== */
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Accessibility ===== */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Focus visible for keyboard navigation */
+*:focus-visible {
+  outline: 3px solid var(--primary-color);
+  outline-offset: 2px;
+}
