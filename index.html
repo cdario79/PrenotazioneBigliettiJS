@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CineVerse Entertainment - Prenotazione Biglietti Cinema Online">
+  <title>CineVerse - Prenotazione Biglietti</title>
+
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles/style.css">
+</head>
+<body>
+
+  <!-- FALLBACK JAVASCRIPT DISABILITATO -->
+  <noscript>
+    <div class="noscript-warning">
+      <div class="noscript-content">
+        <h1>⚠️ JavaScript Richiesto</h1>
+        <p>
+          L'applicazione CineVerse richiede JavaScript per funzionare correttamente.
+        </p>
+        <p>
+          Per prenotare i tuoi biglietti, ti preghiamo di:
+        </p>
+        <ul>
+          <li>Abilitare JavaScript nelle impostazioni del browser</li>
+          <li>Ricaricare la pagina</li>
+        </ul>
+        <details>
+          <summary>Come abilitare JavaScript</summary>
+          <h3>Chrome/Edge</h3>
+          <p>Impostazioni → Privacy e sicurezza → Impostazioni sito → JavaScript → Consentito</p>
+          <h3>Firefox</h3>
+          <p>Digitare <code>about:config</code> nella barra indirizzi → Cercare <code>javascript.enabled</code> → Impostare su <code>true</code></p>
+          <h3>Safari</h3>
+          <p>Preferenze → Sicurezza → Abilita JavaScript</p>
+        </details>
+        <hr>
+        <p class="alternative">
+          <strong>Alternativa:</strong> Contatta la nostra biglietteria al numero
+          <a href="tel:+390212345678">02 1234 5678</a>
+        </p>
+      </div>
+    </div>
+  </noscript>
+
+  <!-- Header -->
+  <header class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <i class="bi bi-film"></i> CineVerse
+      </a>
+      <span class="navbar-text text-white-50">
+        <i class="bi bi-geo-alt"></i> Milano Centro
+      </span>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div id="app" class="container my-5">
+
+    <!-- Hero Section -->
+    <div class="hero-section text-center mb-5">
+      <h1 class="display-4 mb-3">Prenota i tuoi biglietti</h1>
+      <p class="lead text-muted">Scegli il film, seleziona i tuoi posti preferiti e goditi lo spettacolo</p>
+    </div>
+
+    <!-- Film Selection -->
+    <section class="mb-5">
+      <h2 class="section-title mb-4">
+        <i class="bi bi-camera-reels"></i> Scegli il film
+      </h2>
+      <div id="film-list" class="row g-4">
+        <!-- Film cards will be generated dynamically -->
+      </div>
+    </section>
+
+    <!-- Cinema Hall Section -->
+    <section id="sala-section" class="mb-5" style="display: none;">
+      <div class="sala-container">
+        <h2 class="section-title mb-4 text-center">
+          <i class="bi bi-layout-three-columns"></i> Seleziona i tuoi posti
+        </h2>
+
+        <!-- Screen -->
+        <div class="screen-container mb-4">
+          <div class="screen">SCHERMO</div>
+        </div>
+
+        <!-- Legend -->
+        <div class="legend mb-4">
+          <div class="legend-item">
+            <span class="seat available"></span>
+            <span>Disponibile</span>
+          </div>
+          <div class="legend-item">
+            <span class="seat selected"></span>
+            <span>Selezionato</span>
+          </div>
+          <div class="legend-item">
+            <span class="seat occupied"></span>
+            <span>Occupato</span>
+          </div>
+        </div>
+
+        <!-- Seats Grid -->
+        <div id="seats-grid" class="seats-grid">
+          <!-- Seats will be generated dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Booking Summary -->
+    <section id="summary-section" class="mb-5" style="display: none;">
+      <div class="booking-summary">
+        <h3 class="mb-4">
+          <i class="bi bi-ticket-perforated"></i> Riepilogo Prenotazione
+        </h3>
+
+        <div class="summary-content">
+          <div class="row mb-3">
+            <div class="col-6">
+              <strong>Film:</strong>
+            </div>
+            <div class="col-6 text-end" id="summary-film">
+              -
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <strong>Orario:</strong>
+            </div>
+            <div class="col-6 text-end" id="summary-orario">
+              -
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <strong>Sala:</strong>
+            </div>
+            <div class="col-6 text-end" id="summary-sala">
+              -
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <strong>Posti selezionati:</strong>
+            </div>
+            <div class="col-6 text-end" id="summary-posti">
+              0
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              <strong>Posti:</strong>
+            </div>
+            <div class="col-6 text-end" id="summary-posti-list">
+              -
+            </div>
+          </div>
+          <hr>
+          <div class="row total-row">
+            <div class="col-6">
+              <strong class="fs-5">Totale:</strong>
+            </div>
+            <div class="col-6 text-end">
+              <strong class="fs-4 text-primary" id="summary-totale">€0.00</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+          <button id="btn-conferma" class="btn btn-primary btn-lg" disabled>
+            <i class="bi bi-check-circle"></i> Conferma Prenotazione
+          </button>
+          <button id="btn-reset" class="btn btn-outline-secondary">
+            <i class="bi bi-arrow-clockwise"></i> Nuova Prenotazione
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Alert Messages -->
+    <div id="alert-container" class="position-fixed top-0 end-0 p-3" style="z-index: 1050;">
+      <!-- Alerts will be inserted here -->
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer mt-auto py-4">
+    <div class="container text-center">
+      <p class="mb-0 text-muted">
+        &copy; 2025 CineVerse Entertainment |
+        <i class="bi bi-telephone"></i> 02 1234 5678 |
+        <i class="bi bi-envelope"></i> info@cineverse.it
+      </p>
+    </div>
+  </footer>
+
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Application JS (ES6 Modules) -->
+  <script type="module" src="src/main.js"></script>
+
+</body>
+</html>

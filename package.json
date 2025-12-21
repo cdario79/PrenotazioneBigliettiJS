@@ -1,0 +1,40 @@
+{
+  "name": "cineverse-prenotazione-biglietti",
+  "version": "1.0.0",
+  "description": "Applicazione web per la prenotazione di biglietti cinematografici - CineVerse Entertainment",
+  "main": "src/main.js",
+  "type": "module",
+  "scripts": {
+    "start": "live-server --port=8080 --open=index.html",
+    "dev": "live-server --port=8080 --open=index.html --watch=src,styles,index.html",
+    "serve": "live-server --port=3000 --no-browser"
+  },
+  "keywords": [
+    "cinema",
+    "booking",
+    "prenotazione",
+    "biglietti",
+    "vanilla-js",
+    "es6",
+    "frontend"
+  ],
+  "author": "CineVerse Entertainment",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.0"
+  },
+  "engines": {
+    "node": ">=14.0.0",
+    "npm": ">=6.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cineverse/prenotazione-biglietti.git"
+  },
+  "browserslist": [
+    "Chrome >= 90",
+    "Firefox >= 88",
+    "Safari >= 14",
+    "Edge >= 90"
+  ]
+}
