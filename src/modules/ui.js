@@ -313,8 +313,9 @@ export function mostraWarning(messaggio) {
 /**
  * Mostra modal di conferma prenotazione
  * @param {Object} riepilogo - Dati riepilogo prenotazione
+ * @param {Function} onDismiss - Callback da eseguire alla chiusura del modal
  */
-export function mostraModalConferma(riepilogo) {
+export function mostraModalConferma(riepilogo, onDismiss = null) {
   const modalHTML = `
     <div class="modal fade" id="modalConferma" tabindex="-1" aria-labelledby="modalConfermaLabel" aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered">
@@ -388,6 +389,10 @@ export function mostraModalConferma(riepilogo) {
   // Rimuovi dal DOM quando viene chiuso
   modalElement.addEventListener('hidden.bs.modal', () => {
     modalElement.remove();
+    // Esegui callback di chiusura se presente
+    if (onDismiss) {
+      onDismiss();
+    }
   });
 }
 

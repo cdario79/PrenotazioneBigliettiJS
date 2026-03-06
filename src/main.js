@@ -168,13 +168,10 @@ function handleConfermaPrenotazione() {
     btnConferma.innerHTML = testoOriginale;
 
     if (risultato.success) {
-      // Mostra modal conferma
-      mostraModalConferma(risultato.riepilogo);
-
-      // Aggiorna UI
-      const stato = getStato();
-      renderPosti(stato.posti, handlePostoClick);
-      renderRiepilogo();
+      // Mostra modal conferma e resetta al termine
+      mostraModalConferma(risultato.riepilogo, () => {
+        handleResetSilenzioso();
+      });
 
       console.log('✅ Prenotazione confermata:', risultato.riepilogo);
     } else {
@@ -184,6 +181,15 @@ function handleConfermaPrenotazione() {
       console.error('❌ Errore prenotazione:', risultato.messaggio);
     }
   }, 800);
+}
+
+/**
+ * Handler reset applicazione senza conferma (per post-prenotazione)
+ */
+function handleResetSilenzioso() {
+  resetApplicazione();
+  resetUI();
+  console.log('🔄 Applicazione resettata silenziosamente');
 }
 
 /**
