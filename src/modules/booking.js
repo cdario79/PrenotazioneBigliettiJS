@@ -333,13 +333,16 @@ function caricaPostiOccupati(filmId) {
     });
   } else {
     // Genera posti occupati casuali per simulazione
-    const postiOccupatiCasuali = generaPostiOccupatiCasuali(state.posti.length, 0.25);
+    const postiOccupatiCasuali = generaPostiOccupatiCasuali(state.sala, 0.25);
     postiOccupatiCasuali.forEach(postoId => {
       const posto = state.posti.find(p => p.id === postoId);
       if (posto) {
         posto.occupato = true;
       }
     });
+
+    // Salva immediatamente per garantire la persistenza nelle sessioni future
+    salvaDatiLocali();
   }
 }
 

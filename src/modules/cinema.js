@@ -124,14 +124,14 @@ export function getSalaConfig(film) {
  * @param {number} percentuale - Percentuale di posti da occupare (0-1)
  * @returns {Array} Array di ID posti occupati
  */
-export function generaPostiOccupatiCasuali(numPosti, percentuale = 0.3) {
-  const numOccupati = Math.floor(numPosti * percentuale);
+export function generaPostiOccupatiCasuali(sala, percentuale = 0.3) {
+  const numOccupati = Math.floor(sala.totaliPosti * percentuale);
   const lettere = 'ABCDEFGHIJ';
   const postiOccupati = [];
 
   while (postiOccupati.length < numOccupati) {
-    const rigaIndex = Math.floor(Math.random() * 10);
-    const numeroIndex = Math.floor(Math.random() * 10) + 1;
+    const rigaIndex = Math.floor(Math.random() * sala.righe);
+    const numeroIndex = Math.floor(Math.random() * sala.postiPerRiga) + 1;
     const id = `${lettere[rigaIndex]}${numeroIndex}`;
 
     if (!postiOccupati.includes(id)) {
