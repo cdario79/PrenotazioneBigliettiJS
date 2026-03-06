@@ -114,21 +114,23 @@ export function evidenziaFilmAttivo(filmId) {
  * @param {Function} onPostoClick - Callback per click posto
  */
 export function renderPosti(posti, onPostoClick) {
+  const stato = getStato();
+  const postiPerRiga = stato.sala ? stato.sala.postiPerRiga : 10;
+
+  // Imposta il numero di colonne della griglia (etichetta + posti)
+  DOM.seatsGrid.style.gridTemplateColumns = `auto repeat(${postiPerRiga}, 1fr)`;
+
   // Performance: misura tempo rendering
   console.time('Generazione griglia');
 
   const fragment = document.createDocumentFragment();
-  const lettere = 'ABCDEFGHIJ';
-
-  let currentRow = null;
 
   posti.forEach((posto, index) => {
     // Aggiungi label di riga all'inizio di ogni nuova riga
-    if (index % 10 === 0) {
-      currentRow = posto.riga;
+    if (index % postiPerRiga === 0) {
       const rowLabel = document.createElement('div');
       rowLabel.className = 'seat seat-row-label';
-      rowLabel.textContent = currentRow;
+      rowLabel.textContent = posto.riga;
       rowLabel.setAttribute('aria-hidden', 'true');
       fragment.appendChild(rowLabel);
     }

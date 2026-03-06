@@ -289,7 +289,7 @@ body {
 /* Seats Grid */
 .seats-grid {
   display: grid;
-  grid-template-columns: repeat(10, 1fr);
+  grid-template-columns: auto repeat(10, 1fr);
   gap: 12px;
   max-width: 800px;
   margin: 0 auto;
@@ -362,6 +362,11 @@ body {
   font-weight: bold;
   color: var(--dark-bg);
   border: none;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding-right: 15px;
+  width: 40px;
 }
 
 .seat-row-label:hover {
@@ -486,7 +491,7 @@ body {
   }
 
   .seats-grid {
-    grid-template-columns: repeat(8, 1fr);
+    grid-template-columns: auto repeat(8, 1fr);
     gap: 8px;
   }
 
@@ -512,7 +517,7 @@ body {
 
 @media (max-width: 576px) {
   .seats-grid {
-    grid-template-columns: repeat(6, 1fr);
+    grid-template-columns: auto repeat(6, 1fr);
     gap: 6px;
   }
 
