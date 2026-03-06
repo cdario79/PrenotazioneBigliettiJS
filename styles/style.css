@@ -286,14 +286,22 @@ body {
   color: var(--dark-bg);
 }
 
+/* Seats Grid Wrapper */
+.seats-grid-wrapper {
+  overflow-x: auto;
+  padding: 10px 0;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Seats Grid */
 .seats-grid {
   display: grid;
   grid-template-columns: auto repeat(10, 1fr);
   gap: 12px;
-  max-width: 800px;
+  width: max-content;
   margin: 0 auto;
-  padding: 20px;
+  padding: 10px;
+  min-width: 100%;
 }
 
 .seat {
@@ -357,16 +365,20 @@ body {
 
 /* Row Labels */
 .seat-row-label {
-  background: transparent;
+  background: white;
   cursor: default;
   font-weight: bold;
   color: var(--dark-bg);
   border: none;
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   padding-right: 15px;
   width: 40px;
+  position: sticky;
+  left: 0;
+  z-index: 2;
+  box-shadow: 2px 0 5px rgba(0,0,0,0.05);
 }
 
 .seat-row-label:hover {
@@ -491,12 +503,19 @@ body {
   }
 
   .seats-grid {
-    grid-template-columns: auto repeat(8, 1fr);
     gap: 8px;
   }
 
   .seat {
     font-size: 0.65rem;
+    width: 32px;
+    height: 32px;
+  }
+
+  .seat-row-label {
+    width: 30px;
+    padding-right: 10px;
+    font-size: 0.75rem;
   }
 
   .screen {
@@ -517,8 +536,18 @@ body {
 
 @media (max-width: 576px) {
   .seats-grid {
-    grid-template-columns: auto repeat(6, 1fr);
     gap: 6px;
+  }
+
+  .seat {
+    width: 28px;
+    height: 28px;
+    font-size: 0.6rem;
+  }
+
+  .seat-row-label {
+    width: 25px;
+    padding-right: 5px;
   }
 
   .film-card h3 {
