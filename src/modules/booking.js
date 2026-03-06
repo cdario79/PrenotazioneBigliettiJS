@@ -90,7 +90,7 @@ export function togglePosto(postoId) {
 }
 
 /**
- * Calcola il prezzo totale utilizzando reduce (programmazione funzionale)
+ * Calcola il prezzo totale utilizzando reduce
  */
 function calcolaTotale() {
   if (!state.filmAttivo) {
@@ -209,7 +209,7 @@ export function resetApplicazione() {
 }
 
 /**
- * Ottiene lo stato corrente (immutabile - copia profonda)
+ * Ottiene lo stato corrente
  * @returns {Object} Copia dello stato
  */
 export function getStato() {
@@ -224,7 +224,7 @@ export function getStato() {
 }
 
 /**
- * Ottiene i posti disponibili (programmazione funzionale)
+ * Ottiene i posti disponibili
  * @returns {Array} Array di posti disponibili
  */
 export function getPostiDisponibili() {
@@ -232,7 +232,7 @@ export function getPostiDisponibili() {
 }
 
 /**
- * Ottiene i posti occupati (programmazione funzionale)
+ * Ottiene i posti occupati
  * @returns {Array} Array di posti occupati
  */
 export function getPostiOccupati() {

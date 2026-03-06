@@ -141,10 +141,6 @@ function handlePostoClick(postoId) {
   // Aggiorna riepilogo
   renderRiepilogo();
 
-  // Feedback sonoro leggero (opzionale, commentato per default)
-  // if (posto.selezionato) {
-  //   playSelectSound();
-  // }
 }
 
 /**

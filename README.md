@@ -2,23 +2,6 @@
 
 Applicazione web moderna per la prenotazione di biglietti cinematografici, sviluppata con Vanilla JavaScript, HTML5 e CSS3 seguendo le best practices del web development moderno.
 
-## Indice
-
-- [Descrizione](#descrizione)
-- [Funzionalità Principali](#funzionalità-principali)
-- [Tecnologie Utilizzate](#tecnologie-utilizzate)
-- [Installazione e Avvio](#installazione-e-avvio)
-- [Struttura del Progetto](#struttura-del-progetto)
-- [Scelte Tecniche](#scelte-tecniche)
-- [Architettura e Pattern](#architettura-e-pattern)
-- [Performance e Ottimizzazioni](#performance-e-ottimizzazioni)
-- [Accessibilità](#accessibilità)
-- [Browser Supportati](#browser-supportati)
-- [Testing](#testing)
-- [Roadmap Future](#roadmap-future)
-
----
-
 ## Descrizione
 
 CineVerse è un'applicazione Single Page Application (SPA) che permette agli utenti di:
@@ -27,7 +10,7 @@ CineVerse è un'applicazione Single Page Application (SPA) che permette agli ute
 - Confermare prenotazioni con persistenza locale
 - Gestire l'esperienza utente in modo fluido e intuitivo
 
-Il progetto è stato sviluppato come dimostrazione di competenze avanzate in **JavaScript moderno (ES6+)**, **manipolazione DOM**, **state management** e **design responsive**.
+Il progetto è stato sviluppato con **JavaScript ES6+**, **manipolazione DOM**, **state management** e **design responsive**.
 
 ---
 
@@ -55,7 +38,7 @@ Il progetto è stato sviluppato come dimostrazione di competenze avanzate in **J
 ### Persistenza Dati
 - **LocalStorage** per salvare posti occupati
 - **Ripristino automatico** al ricaricamento pagina
-- **Simulazione realistica** con posti occupati casuali per ogni film
+- **Simulazione realistica** con posti occupati casuali per ogni film al primo caricamento
 
 ### UI/UX Avanzata
 - **Design moderno** con gradients e animazioni CSS
@@ -101,9 +84,9 @@ Il progetto è stato sviluppato come dimostrazione di competenze avanzate in **J
 ### Step 1: Clone o Download
 ```bash
 # Clone repository (se disponibile)
-git clone https://github.com/cineverse/prenotazione-biglietti.git
+git clone https://github.com/...
 
-# Oppure scarica e decomprimi lo ZIP
+# Oppure scarica e decomprimi lo ZIP nella cartella
 cd PrenotazioneBiglietti
 ```
 
@@ -124,10 +107,7 @@ npm run dev
 npm run serve
 ```
 
-L'applicazione sarà disponibile su **http://localhost:8080**
-
-### Alternativa Senza Node.js
-Apri direttamente `index.html` nel browser. I moduli ES6 funzionano correttamente con il protocollo `file://` nei browser moderni.
+L'applicazione sarà disponibile su **http://localhost:3000**
 
 ---
 
@@ -148,13 +128,9 @@ PrenotazioneBiglietti/
 │       ├── booking.js        # Logica prenotazioni e state management
 │       └── ui.js             # Manipolazione DOM e rendering
 │
-├── docs/
-│   ├── workflow.md           # Specifiche workflow di sviluppo
-│   └── example.md            # Esempi e integrazioni
-│
 ├── package.json              # Configurazione npm e scripts
 ├── README.md                 # Documentazione progetto (questo file)
-└── .gitignore               # File da ignorare in Git
+└── .gitignore                # File da ignorare in Git
 ```
 
 ### Descrizione Moduli
@@ -198,7 +174,6 @@ PrenotazioneBiglietti/
 - **Separation of Concerns** - ogni modulo ha responsabilità chiare
 - **Riutilizzabilità** del codice
 - **Manutenibilità** migliorata
-- **Tree-shaking** possibile (in futuro con bundler)
 - Organizzazione professionale del codice
 
 **Implementazione**:
@@ -223,7 +198,6 @@ import { inizializzaStato } from './modules/booking.js';
 - **Predicibilità** - unica fonte di verità per lo stato dell'app
 - **Debugging facilitato** - stato controllato e tracciabile
 - **Immutabilità** - copie dello stato invece di mutazioni dirette
-- Pattern simile a Redux/Vuex ma in vanilla JS
 
 **Implementazione**:
 ```javascript
@@ -248,15 +222,13 @@ export function getStato() {
 
 ---
 
-### 43. **Programmazione Funzionale**
+### 3. **Programmazione Funzionale**
 
 **Scelta**: Utilizzo estensivo di metodi funzionali degli array
 
 **Motivazione**:
 - **Codice dichiarativo** più leggibile
 - **Immutabilità** - no side effects
-- **Composibilità** delle funzioni
-- Stile moderno JavaScript
 
 **Esempi**:
 ```javascript
@@ -282,7 +254,6 @@ const postiIds = posti.map(p => p.id).sort().join(', ');
 - **Simulazione realistica** di persistenza dati
 - **No backend necessario** - applicazione standalone
 - **Funziona offline**
-- Dimostra conoscenza Web Storage API
 
 **Gestione Errori**:
 ```javascript
@@ -371,8 +342,6 @@ container.appendChild(fragment);
 **Motivazione**:
 - **Inclusività** - app utilizzabile da tutti
 - **Best practice** web moderne
-- **SEO** migliorato
-- Conformità WCAG 2.1 (livello AA)
 
 **Implementazioni**:
 ```javascript
@@ -402,61 +371,11 @@ seat.addEventListener('keydown', (e) => {
 - **Professionalità**
 
 **Casi gestiti**:
-- ✅ Cambio film con posti già selezionati (conferma utente)
-- ✅ Sala completamente occupata (messaggio informativo)
-- ✅ Click su posto già occupato (feedback errore)
-- ✅ Conferma senza selezione posti (validazione)
-- ✅ JavaScript disabilitato (fallback noscript)
-- ✅ LocalStorage non disponibile (graceful degradation)
-- ✅ Browser non compatibile (warning)
-
----
-
-## Architettura e Pattern
-
-### Pattern Architetturali
-
-#### 1. **Module Pattern**
-Ogni file è un modulo ES6 con export/import
-
-#### 2. **MVC-like Structure**
-- **Model**: `cinema.js`, `booking.js` (dati e logica)
-- **View**: `ui.js` (rendering e DOM)
-- **Controller**: `main.js` (orchestrazione)
-
-#### 3. **Observer Pattern (semplificato)**
-Cambiamenti di stato → re-rendering UI automatico
-
-#### 4. **Singleton Pattern**
-State object unico condiviso
-
----
-
-## ♿ Accessibilità
-
-### Funzionalità Implementate
-- ✅ **Navigazione tastiera completa**
-  - Tab per navigazione
-  - Enter/Space per selezione
-  - Escape per deselezionare tutti
-
-- ✅ **Screen Reader Support**
-  - ARIA labels descrittivi
-  - ARIA states (pressed, selected, disabled)
-  - Role attributes appropriati
-
-- ✅ **Focus Management**
-  - Focus visibile su elementi interattivi
-  - Outline personalizzato
-
-- ✅ **Contrast Ratio**
-  - Testo rispetta WCAG AA (4.5:1)
-  - Elementi interattivi distinguibili
-
-- ✅ **Keyboard Shortcuts**
-  - Ctrl+R: Reset applicazione
-  - Ctrl+Enter: Conferma prenotazione
-  - ESC: Deseleziona tutti i posti
-
----
+- Cambio film con posti già selezionati (conferma utente)
+- Sala completamente occupata (messaggio informativo)
+- Click su posto già occupato (feedback errore)
+- Conferma senza selezione posti (validazione)
+- JavaScript disabilitato (fallback noscript)
+- LocalStorage non disponibile (graceful degradation)
+- Browser non compatibile (warning)
 

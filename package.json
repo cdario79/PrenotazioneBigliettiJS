@@ -18,7 +18,7 @@
     "es6",
     "frontend"
   ],
-  "author": "CineVerse Entertainment",
+  "author": "Dario Colombo",
   "license": "MIT",
   "devDependencies": {
     "live-server": "^1.2.0"
@@ -26,10 +26,6 @@
   "engines": {
     "node": ">=14.0.0",
     "npm": ">=6.0.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/cineverse/prenotazione-biglietti.git"
   },
   "browserslist": [
     "Chrome >= 90",
